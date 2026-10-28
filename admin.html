@@ -1,0 +1,704 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Panel de Administración | TECHSOLUTIONS E-Commerce</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="bg-primary text-white py-4">
+
+        <div class="container text-center">
+
+            <h1>
+                TECHSOLUTIONS E-Commerce
+            </h1>
+
+            <p class="mb-0">
+                Sistema Web para la Gestión y Comercialización de Productos Tecnológicos
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <!-- MENÚ -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <div class="container">
+
+            <a
+                class="navbar-brand"
+                href="index.html">
+
+                TECHSOLUTIONS
+
+            </a>
+
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menu">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+
+            <div
+                class="collapse navbar-collapse"
+                id="menu">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="index.html">
+
+                            Inicio
+
+                        </a>
+
+                    </li>
+
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="catalogo.html">
+
+                            Productos
+
+                        </a>
+
+                    </li>
+
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="carrito.html">
+
+                            Carrito
+
+                        </a>
+
+                    </li>
+
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="contacto.html">
+
+                            Contacto
+
+                        </a>
+
+                    </li>
+
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link active"
+                            href="admin.html">
+
+                            Administración
+
+                        </a>
+
+                    </li>
+
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link text-danger"
+                            href="index.html"
+                            onclick="cerrarSesion()">
+
+                            Salir
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- CONTENIDO -->
+    <main class="container py-5">
+
+
+        <!-- BREADCRUMB -->
+
+        <nav class="mb-4">
+
+            <ol class="breadcrumb">
+
+                <li class="breadcrumb-item">
+
+                    <a href="index.html">
+                        Inicio
+                    </a>
+
+                </li>
+
+                <li class="breadcrumb-item active">
+
+                    Panel de Administración
+
+                </li>
+
+            </ol>
+
+        </nav>
+
+
+        <!-- TÍTULO -->
+
+        <h2 class="text-center">
+
+            Panel de Administración
+
+        </h2>
+
+
+        <p class="text-center text-muted mb-5">
+
+            Administre productos, categorías, pedidos y estadísticas
+            del sistema TECHSOLUTIONS E-Commerce.
+
+        </p>
+
+
+        <!-- =============================== -->
+        <!-- TARJETAS RESUMEN -->
+        <!-- =============================== -->
+
+        <div class="row mb-5">
+
+
+            <div class="col-md-3 mb-3">
+
+                <div class="card shadow text-center h-100">
+
+                    <div class="card-body">
+
+                        <i class="bi bi-box-seam display-5 text-primary"></i>
+
+                        <h6 class="mt-3">
+                            Productos
+                        </h6>
+
+                        <h3 id="total-productos">
+                            6
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-3 mb-3">
+
+                <div class="card shadow text-center h-100">
+
+                    <div class="card-body">
+
+                        <i class="bi bi-cart-check display-5 text-success"></i>
+
+                        <h6 class="mt-3">
+                            Pedidos
+                        </h6>
+
+                        <h3>
+                            24
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-3 mb-3">
+
+                <div class="card shadow text-center h-100">
+
+                    <div class="card-body">
+
+                        <i class="bi bi-people display-5 text-info"></i>
+
+                        <h6 class="mt-3">
+                            Usuarios
+                        </h6>
+
+                        <h3>
+                            58
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-3 mb-3">
+
+                <div class="card shadow text-center h-100">
+
+                    <div class="card-body">
+
+                        <i class="bi bi-currency-dollar display-5 text-warning"></i>
+
+                        <h6 class="mt-3">
+                            Ventas
+                        </h6>
+
+                        <h3>
+                            $18.6M
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =============================== -->
+        <!-- ACCIONES ADMINISTRATIVAS -->
+        <!-- =============================== -->
+
+        <div class="row mb-5">
+
+
+            <div class="col-md-4 mb-3">
+
+                <div class="card shadow h-100">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-box-seam display-4 text-primary"></i>
+
+                        <h5 class="mt-3">
+                            Gestionar Productos
+                        </h5>
+
+                        <p class="text-muted">
+                            Agregue, consulte y elimine productos del catálogo.
+                        </p>
+
+                        <button
+                            class="btn btn-primary"
+                            onclick="mostrarGestion('productos')">
+
+                            Administrar productos
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4 mb-3">
+
+                <div class="card shadow h-100">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-tags display-4 text-success"></i>
+
+                        <h5 class="mt-3">
+                            Categorías
+                        </h5>
+
+                        <p class="text-muted">
+                            Administre las categorías disponibles.
+                        </p>
+
+                        <button
+                            class="btn btn-success"
+                            onclick="mostrarGestion('categorias')">
+
+                            Administrar categorías
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4 mb-3">
+
+                <div class="card shadow h-100">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-clipboard-check display-4 text-warning"></i>
+
+                        <h5 class="mt-3">
+                            Pedidos
+                        </h5>
+
+                        <p class="text-muted">
+                            Consulte y actualice el estado de los pedidos.
+                        </p>
+
+                        <button
+                            class="btn btn-warning"
+                            onclick="mostrarGestion('pedidos')">
+
+                            Administrar pedidos
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =============================== -->
+        <!-- GESTIÓN DE PRODUCTOS -->
+        <!-- =============================== -->
+
+        <section
+            id="gestion-productos"
+            class="card shadow mb-5">
+
+            <div class="card-header bg-primary text-white">
+
+                <h4 class="mb-0">
+
+                    Gestión de Productos
+
+                </h4>
+
+            </div>
+
+
+            <div class="card-body">
+
+
+                <!-- FORMULARIO -->
+
+                <form
+                    id="form-producto"
+                    class="row g-3 mb-4">
+
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Nombre del producto
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nombre-producto"
+                            class="form-control"
+                            placeholder="Ej. Laptop Lenovo"
+                            required>
+
+                    </div>
+
+
+                    <div class="col-md-3">
+
+                        <label class="form-label">
+                            Categoría
+                        </label>
+
+                        <select
+                            id="categoria-producto"
+                            class="form-select"
+                            required>
+
+                            <option value="">
+                                Seleccione
+                            </option>
+
+                            <option value="Laptops">
+                                Laptops
+                            </option>
+
+                            <option value="Monitores">
+                                Monitores
+                            </option>
+
+                            <option value="Accesorios">
+                                Accesorios
+                            </option>
+
+                            <option value="Almacenamiento">
+                                Almacenamiento
+                            </option>
+
+                            <option value="Audio">
+                                Audio
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="col-md-3">
+
+                        <label class="form-label">
+                            Precio
+                        </label>
+
+                        <input
+                            type="number"
+                            id="precio-producto"
+                            class="form-control"
+                            min="0"
+                            placeholder="0"
+                            required>
+
+                    </div>
+
+
+                    <div class="col-12">
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary">
+
+                            <i class="bi bi-plus-circle"></i>
+
+                            Agregar producto
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+
+                <!-- TABLA -->
+
+                <div class="table-responsive">
+
+                    <table class="table table-hover align-middle">
+
+                        <thead class="table-dark">
+
+                            <tr>
+
+                                <th>ID</th>
+
+                                <th>Producto</th>
+
+                                <th>Categoría</th>
+
+                                <th>Precio</th>
+
+                                <th>Acción</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="tabla-productos-admin">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =============================== -->
+        <!-- GESTIÓN DE CATEGORÍAS -->
+        <!-- =============================== -->
+
+        <section
+            id="gestion-categorias"
+            class="card shadow mb-5 d-none">
+
+            <div class="card-header bg-success text-white">
+
+                <h4 class="mb-0">
+                    Gestión de Categorías
+                </h4>
+
+            </div>
+
+
+            <div class="card-body">
+
+                <div class="row">
+
+                    <div class="col-md-8">
+
+                        <ul class="list-group">
+
+                            <li class="list-group-item">
+                                Laptops
+                            </li>
+
+                            <li class="list-group-item">
+                                Monitores
+                            </li>
+
+                            <li class="list-group-item">
+                                Accesorios
+                            </li>
+
+                            <li class="list-group-item">
+                                Almacenamiento
+                            </li>
+
+                            <li class="list-group-item">
+                                Audio
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="alert alert-info">
+
+                            <i class="bi bi-info-circle"></i>
+
+                            Las categorías permiten organizar
+                            y facilitar la búsqueda de productos.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =============================== -->
+        <!-- GESTIÓN DE PEDIDOS -->
+        <!-- =============================== -->
+
+        <section
+            id="gestion-pedidos"
+            class="card shadow mb-5 d-none">
+
+            <div class="card-header bg-warning">
+
+                <h4 class="mb-0">
+                    Gestión de Pedidos
+                </h4>
+
+            </div>
+
+
+            <div class="card-body">
+
+                <div class="table-responsive">
+
+                    <table class="table table-hover">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Pedido</th>
+
+                                <th>Cliente</th>
+
+                                <th>Fecha</th>
+
+                                <th>Total</th>
+
+                                <th>Estado</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>#10025</td>
+
+                                <td>Cliente TECHSOLUTIONS</td>
+
+                                <td>20/09/2026</td>
+
+                                <td>$3.299.900</td>
+
+                                <td>
+
+                                    <select
+                                        class="form-select form-select-sm"
+                                        onchange="actualizarEstadoPedido(this)">
+
+                                        <option>
+                                            Preparando
+```
