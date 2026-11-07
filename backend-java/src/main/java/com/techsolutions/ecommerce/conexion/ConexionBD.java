@@ -1,4 +1,3 @@
-
 package com.techsolutions.ecommerce.conexion;
 
 import java.sql.Connection;
@@ -12,8 +11,21 @@ public class ConexionBD {
 
     private static final String USUARIO = "root";
 
+    static {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new ExceptionInInitializerError(
+                    "No se pudo cargar el controlador JDBC de MySQL: "
+                    + e.getMessage()
+            );
+        }
+    }
+
     public static Connection obtenerConexion() throws SQLException {
-        String contrasena = System.getenv("TECHSOLUTIONS_DB_PASSWORD");
+
+        String contrasena =
+                System.getenv("TECHSOLUTIONS_DB_PASSWORD");
 
         if (contrasena == null) {
             contrasena = "";
