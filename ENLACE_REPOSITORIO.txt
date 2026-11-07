@@ -1,0 +1,8 @@
+﻿PROYECTO: TECHSOLUTIONS-ECommerce
+EVIDENCIA: GA7-220501096-AA2-EV01
+PROGRAMA: Analisis y Desarrollo de Software - SENA
+
+REPOSITORIO GITHUB:
+https://github.com/jsborrero11-hash/TECHSOLUTIONS-ECommerce
+
+RAMA PRINCIPAL: master
