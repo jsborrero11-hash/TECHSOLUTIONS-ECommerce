@@ -12,11 +12,19 @@ import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Este Servlet permite gestionar las solicitudes del módulo de productos.
+ * Utilizo el método GET para mostrar el listado y el formulario, y el método POST para validar y registrar nuevos productos.
+ */
 @WebServlet("/productos")
 public class ProductoServlet extends HttpServlet {
 
     private final ProductoDAO productoDAO = new ProductoDAO();
-
+/**
+ * Atiende las solicitudes para consultar productos.
+ * Si el usuario selecciona la opción de nuevo producto, muestra el formulario de registro.
+ * En los demás casos, consulta y muestra los productos que están guardados en la base de datos.
+ */
     @Override
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response)
@@ -47,7 +55,11 @@ public class ProductoServlet extends HttpServlet {
             );
         }
     }
-
+/**
+ * Recibe los datos enviados desde el formulario de productos.
+ * Verifica que los campos obligatorios tengan valores válidos y registra el producto en la base de datos.
+ * Si ocurre un error, informa al usuario; si el registro es exitoso, lo redirige al listado de productos.
+ */
     @Override
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response)

@@ -1,9 +1,12 @@
 package com.techsolutions.ecommerce.modelo;
 
 import java.math.BigDecimal;
-
+/**
+ * Representa los productos que se manejan en TECHSOLUTIONS-ECommerce.
+ * Aquí se guarda la información de cada producto, como su nombre, marca, precio, cantidad disponible y estado.
+ */
 public class Producto {
-
+// Datos que identifican y describen cada producto.
     private int idProducto;
     private int idCategoria;
     private String nombreProducto;
@@ -15,8 +18,10 @@ public class Producto {
     private String estado;
 
     public Producto() {
-    }
-
+    }    
+/**
+ * Los métodos get permiten consultar la información de un producto, mientras que los métodos set permiten asignar o actualizar sus datos.
+ */
     public int getIdProducto() {
         return idProducto;
     }
