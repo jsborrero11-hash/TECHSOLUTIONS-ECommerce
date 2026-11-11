@@ -12,11 +12,13 @@
     <packaging>war</packaging>
 
     <properties>
+        <!-- Configuracion de Java y codificacion -->
         <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
+
         <!-- Conexion MySQL mediante JDBC -->
         <dependency>
             <groupId>com.mysql</groupId>
@@ -39,15 +41,34 @@
             <version>3.1.1</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- JUnit 5 para pruebas automatizadas -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.11.4</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
         <plugins>
+
+            <!-- Generacion del archivo WAR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.4.0</version>
             </plugin>
+
+            <!-- Ejecucion de pruebas con JUnit 5 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.2</version>
+            </plugin>
+
         </plugins>
     </build>
 
