@@ -1,0 +1,117 @@
+/* ==================================================
+   TECHSOLUTIONS E-Commerce
+   Estilos globales e identidad visual
+   ================================================== */
+
+/* Variables globales del sistema */
+:root {
+  --color-primario: #2563eb;
+  --color-primario-hover: #1d4ed8;
+  --color-texto: #1e1e1e;
+  --color-texto-secundario: #6b7280;
+  --color-fondo: #ffffff;
+  --color-fondo-secundario: #f3f4f6;
+  --color-exito: #16a34a;
+  --color-error: #dc2626;
+  --color-advertencia: #d97706;
+  --color-borde: #e5e7eb;
+
+  --fuente-principal: 'Inter', Arial, sans-serif;
+  --radio-borde: 8px;
+  --sombra-suave: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  color-scheme: light;
+}
+
+/* Configuración general */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: var(--fuente-principal);
+  color: var(--color-texto);
+  background-color: var(--color-fondo);
+  line-height: 1.6;
+}
+
+/* Contenedor principal de React */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Encabezados */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-texto);
+  font-weight: 600;
+}
+
+/* Enlaces */
+a {
+  color: var(--color-primario);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-primario-hover);
+}
+
+/* Imágenes responsivas */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Personalización del botón principal de Bootstrap */
+.btn-primary {
+  --bs-btn-color: #ffffff;
+  --bs-btn-bg: var(--color-primario);
+  --bs-btn-border-color: var(--color-primario);
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-hover-bg: var(--color-primario-hover);
+  --bs-btn-hover-border-color: var(--color-primario-hover);
+  --bs-btn-active-bg: var(--color-primario-hover);
+  --bs-btn-active-border-color: var(--color-primario-hover);
+  --bs-btn-disabled-bg: var(--color-primario);
+  --bs-btn-disabled-border-color: var(--color-primario);
+}
+
+/* Accesibilidad mediante navegación por teclado */
+:focus-visible {
+  outline: 3px solid var(--color-primario);
+  outline-offset: 3px;
+}
+
+/* Clases auxiliares */
+.texto-secundario {
+  color: var(--color-texto-secundario);
+}
+
+.fondo-secundario {
+  background-color: var(--color-fondo-secundario);
+}
+
+.sombra-suave {
+  box-shadow: var(--sombra-suave);
+}
+
+/* Preferencias de accesibilidad del usuario */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
