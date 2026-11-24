@@ -2,12 +2,17 @@
 import { Routes, Route, Link } from 'react-router-dom'
 
 import Layout from '../components/layout/Layout.jsx'
+
 import Inicio from '../pages/Inicio.jsx'
 import Catalogo from '../pages/Catalogo.jsx'
+import DetalleProducto from '../pages/DetalleProducto.jsx'
 
 /**
- * Componente temporal para las páginas
- * que todavía se encuentran en desarrollo.
+ * Componente temporal para las páginas que todavía
+ * se encuentran en proceso de desarrollo.
+ *
+ * @param {Object} props - Propiedades del componente.
+ * @param {string} props.titulo - Título de la página.
  */
 function PaginaProvisional({ titulo }) {
   return (
@@ -18,9 +23,7 @@ function PaginaProvisional({ titulo }) {
         aria-hidden="true"
       ></i>
 
-      <h1 className="mt-3">
-        {titulo}
-      </h1>
+      <h1 className="mt-3">{titulo}</h1>
 
       <p className="texto-secundario">
         Esta sección se encuentra en desarrollo.
@@ -38,9 +41,11 @@ function PaginaProvisional({ titulo }) {
 }
 
 /**
- * AppRoutes
- * Centraliza las rutas de navegación
+ * Configuración centralizada de las rutas
  * de TECHSOLUTIONS E-Commerce.
+ *
+ * Las páginas comparten la estructura general
+ * definida mediante el componente Layout.
  */
 function AppRoutes() {
   return (
@@ -48,27 +53,25 @@ function AppRoutes() {
 
       <Route path="/" element={<Layout />}>
 
-        {/* Páginas implementadas */}
-
+        {/* Página de inicio */}
         <Route
           index
           element={<Inicio />}
         />
 
+        {/* Catálogo de productos */}
         <Route
           path="catalogo"
           element={<Catalogo />}
         />
 
-        {/* Páginas pendientes de implementación */}
-
+        {/* Detalle dinámico del producto */}
         <Route
           path="producto/:id"
-          element={
-            <PaginaProvisional titulo="Detalle del producto" />
-          }
+          element={<DetalleProducto />}
         />
 
+        {/* Inicio de sesión */}
         <Route
           path="login"
           element={
@@ -76,6 +79,7 @@ function AppRoutes() {
           }
         />
 
+        {/* Registro de usuarios */}
         <Route
           path="registro"
           element={
@@ -83,6 +87,7 @@ function AppRoutes() {
           }
         />
 
+        {/* Carrito de compras */}
         <Route
           path="carrito"
           element={
@@ -90,6 +95,7 @@ function AppRoutes() {
           }
         />
 
+        {/* Contacto */}
         <Route
           path="contacto"
           element={
@@ -98,7 +104,6 @@ function AppRoutes() {
         />
 
         {/* Gestión de rutas inexistentes */}
-
         <Route
           path="*"
           element={
