@@ -115,3 +115,71 @@ img {
     scroll-behavior: auto;
   }
 }
+
+/* Fondo institucional de Bootstrap */
+.bg-primary {
+  background-color: var(--color-primario) !important;
+}
+
+/* Menú principal de navegación */
+.navbar-techsolutions {
+  background-color: var(--color-primario-hover);
+}
+
+.navbar-techsolutions .nav-link {
+  color: #ffffff;
+  font-weight: 500;
+  padding: 10px 14px;
+  border-radius: var(--radio-borde);
+  transition: background-color 0.2s ease;
+}
+
+.navbar-techsolutions .nav-link:hover,
+.navbar-techsolutions .nav-link.active {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.18);
+}
+
+.navbar-techsolutions .nav-link:focus-visible,
+.navbar-techsolutions .navbar-toggler:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* Pie de página de TECHSOLUTIONS */
+.footer-techsolutions {
+  background-color: var(--color-texto);
+}
+
+.footer-techsolutions .footer-texto {
+  color: #d1d5db;
+}
+
+.footer-techsolutions a {
+  display: inline-block;
+  color: #d1d5db;
+  margin-bottom: 6px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-techsolutions a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.footer-techsolutions a:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+}
+
+.footer-techsolutions .footer-separador {
+  border-color: #6b7280;
+  opacity: 0.6;
+}
+
+@media (max-width: 767px) {
+  .footer-techsolutions {
+    text-align: center;
+  }
+}
