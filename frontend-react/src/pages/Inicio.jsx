@@ -1,35 +1,25 @@
-import { Link } from 'react-router-dom'
+
+import Banner from '../components/inicio/Banner.jsx'
+import Categorias from '../components/inicio/Categorias.jsx'
+import ProductosDestacados from '../components/inicio/ProductosDestacados.jsx'
 
 /**
  * CF14 - Inicio
  * Página principal de TECHSOLUTIONS E-Commerce.
- * Estructura inicial para validar la integración
- * de los componentes generales.
+ *
+ * Integra los componentes de presentación comercial,
+ * categorías y productos destacados de la tienda.
+ *
+ * Los componentes generales Header, Navbar y Footer
+ * son administrados por Layout.
  */
 function Inicio() {
   return (
-    <section className="container py-5 text-center">
-      <i
-        className="bi bi-pc-display fs-1 text-primary"
-        aria-hidden="true"
-      ></i>
-
-      <h1 className="mt-3">
-        Bienvenido a TECHSOLUTIONS E-Commerce
-      </h1>
-
-      <p className="texto-secundario">
-        Encuentra computadores, celulares, accesorios
-        y productos tecnológicos.
-      </p>
-
-      <div className="mt-4">
-        <Link to="/catalogo" className="btn btn-primary">
-          <i className="bi bi-cart3 me-2" aria-hidden="true"></i>
-          Ver productos
-        </Link>
-      </div>
-    </section>
+    <>
+      <Banner />
+      <Categorias />
+      <ProductosDestacados />
+    </>
   )
 }
 

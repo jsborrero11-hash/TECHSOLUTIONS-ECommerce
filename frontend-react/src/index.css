@@ -183,3 +183,514 @@ img {
     text-align: center;
   }
 }
+
+
+/* =========================================
+   CF15 - BANNER DE INICIO
+   ========================================= */
+
+.banner-inicio {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 420px;
+  padding: 60px 20px;
+
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.65),
+      rgba(0, 0, 0, 0.65)
+    ),
+    url('/img/banner.jpeg');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--color-texto);
+  color: #ffffff;
+}
+
+.banner-contenido {
+  max-width: 850px;
+}
+
+.banner-titulo {
+  color: #ffffff;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.banner-descripcion {
+  color: #ffffff;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.banner-inicio .btn {
+  padding: 12px 28px;
+  font-weight: 600;
+}
+
+.banner-inicio .btn:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* Adaptación del banner a dispositivos móviles */
+
+@media (max-width: 767px) {
+  .banner-inicio {
+    min-height: 340px;
+    padding: 40px 16px;
+  }
+
+  .banner-inicio .btn {
+    font-size: 1rem;
+  }
+}
+
+
+/* =========================================
+   CF16 - CATEGORÍAS DE PRODUCTOS
+   ========================================= */
+
+.seccion-categorias {
+  background-color: var(--color-fondo-secundario);
+}
+
+.tarjeta-categoria {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  min-height: 160px;
+  padding: 24px 12px;
+
+  background-color: var(--color-fondo);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-borde);
+  box-shadow: var(--sombra-suave);
+
+  color: var(--color-texto);
+  text-align: center;
+  text-decoration: none;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.tarjeta-categoria:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-primario);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  color: var(--color-primario);
+}
+
+.categoria-icono {
+  font-size: 2.5rem;
+  color: var(--color-primario);
+}
+
+.categoria-nombre {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  color: inherit;
+  overflow-wrap: anywhere;
+}
+
+/* Adaptación a dispositivos móviles */
+
+@media (max-width: 767px) {
+  .tarjeta-categoria {
+    min-height: 140px;
+    padding: 16px 8px;
+  }
+
+  .categoria-icono {
+    font-size: 2rem;
+  }
+
+  .categoria-nombre {
+    font-size: 0.9rem;
+  }
+}
+
+/* Respeta las preferencias de accesibilidad */
+
+@media (prefers-reduced-motion: reduce) {
+  .tarjeta-categoria {
+    transition: none;
+  }
+
+  .tarjeta-categoria:hover {
+    transform: none;
+  }
+}
+
+
+/* =========================================
+   CF21 - TARJETA DE PRODUCTO
+   ========================================= */
+
+.producto-card {
+  overflow: hidden;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-borde);
+  background-color: var(--color-fondo);
+  box-shadow: var(--sombra-suave);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.producto-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-primario);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.producto-imagen {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  padding: 16px;
+  background-color: var(--color-fondo-secundario);
+}
+
+.producto-card .card-body {
+  padding: 20px;
+}
+
+.producto-categoria {
+  color: var(--color-texto-secundario);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.producto-nombre {
+  color: var(--color-texto);
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  overflow-wrap: anywhere;
+}
+
+.producto-descripcion {
+  color: var(--color-texto-secundario);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.producto-precio {
+  color: var(--color-primario);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.producto-card .btn {
+  padding: 10px 16px;
+  font-weight: 500;
+}
+
+/* Adaptación a dispositivos móviles */
+
+@media (max-width: 767px) {
+  .producto-imagen {
+    height: 200px;
+    padding: 12px;
+  }
+
+  .producto-card .card-body {
+    padding: 16px;
+  }
+
+  .producto-precio {
+    font-size: 1.25rem;
+  }
+}
+
+/* Respeta las preferencias de accesibilidad */
+
+@media (prefers-reduced-motion: reduce) {
+  .producto-card {
+    transition: none;
+  }
+
+  .producto-card:hover {
+    transform: none;
+  }
+}
+
+
+/* =========================================
+   CF17 - PRODUCTOS DESTACADOS
+   ========================================= */
+
+.seccion-destacados {
+  background-color: var(--color-fondo);
+}
+
+.seccion-destacados h2 {
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.seccion-destacados .btn-lg {
+  padding: 12px 24px;
+  font-weight: 600;
+}
+
+/* Adaptación a dispositivos móviles */
+
+@media (max-width: 767px) {
+  .seccion-destacados .btn-lg {
+    font-size: 1rem;
+  }
+}
+
+
+/* =========================================
+   CF19 - BUSCADOR DE PRODUCTOS
+   ========================================= */
+
+.buscador-productos {
+  width: 100%;
+}
+
+.buscador-productos .form-label {
+  color: var(--color-texto);
+  margin-bottom: 8px;
+}
+
+.buscador-productos .form-control {
+  min-height: 48px;
+  min-width: 0;
+  border-color: var(--color-borde);
+  font-size: 0.95rem;
+}
+
+.buscador-productos .form-control:focus {
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.15);
+}
+
+.buscador-icono {
+  background-color: var(--color-fondo-secundario);
+  border-color: var(--color-borde);
+  color: var(--color-primario);
+}
+
+.buscador-productos .btn {
+  min-width: 48px;
+}
+
+/* Evita duplicar el botón de limpieza del navegador */
+
+.buscador-productos input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+/* Adaptación a dispositivos móviles */
+
+@media (max-width: 767px) {
+  .buscador-productos .form-control {
+    font-size: 1rem;
+  }
+}
+
+
+/* =========================================
+   CF20 - FILTRO DE CATEGORÍAS
+   ========================================= */
+
+.filtro-categorias {
+  width: 100%;
+}
+
+.filtro-categorias .form-label {
+  color: var(--color-texto);
+  margin-bottom: 8px;
+}
+
+.filtro-categorias .form-select {
+  min-height: 48px;
+  min-width: 0;
+  border-color: var(--color-borde);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.filtro-categorias .form-select:focus {
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.15);
+}
+
+.filtro-icono {
+  background-color: var(--color-fondo-secundario);
+  border-color: var(--color-borde);
+  color: var(--color-primario);
+}
+
+/* Adaptación a dispositivos móviles */
+
+@media (max-width: 767px) {
+  .filtro-categorias .form-select {
+    font-size: 1rem;
+  }
+}
+
+
+/* =========================================
+   CF22 - LISTA DE PRODUCTOS
+   ========================================= */
+
+.lista-productos {
+  width: 100%;
+}
+
+.resultados-productos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.resultados-titulo {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.resultados-cantidad {
+  color: var(--color-texto-secundario);
+  font-size: 0.95rem;
+}
+
+.productos-sin-resultados {
+  padding: 60px 24px;
+  background-color: var(--color-fondo-secundario);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-borde);
+}
+
+.sin-resultados-icono {
+  display: inline-block;
+  font-size: 3.5rem;
+  color: var(--color-texto-secundario);
+  margin-bottom: 16px;
+}
+
+.productos-sin-resultados h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.productos-sin-resultados p {
+  max-width: 500px;
+  margin: 0 auto 24px;
+}
+
+.productos-sin-resultados .btn {
+  padding: 10px 24px;
+  font-weight: 500;
+}
+
+/* Adaptación a dispositivos móviles */
+
+@media (max-width: 767px) {
+  .resultados-productos {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .resultados-titulo {
+    font-size: 1.15rem;
+  }
+
+  .productos-sin-resultados {
+    padding: 40px 16px;
+  }
+
+  .sin-resultados-icono {
+    font-size: 2.75rem;
+  }
+
+  .productos-sin-resultados h3 {
+    font-size: 1.2rem;
+  }
+}
+
+
+/* =========================================
+   CF18 - PÁGINA CATÁLOGO DE PRODUCTOS
+   ========================================= */
+
+.pagina-catalogo {
+  background-color: var(--color-fondo);
+}
+
+.catalogo-encabezado h1 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.catalogo-encabezado p {
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+.catalogo-filtros {
+  padding: 24px;
+  background-color: var(--color-fondo-secundario);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-borde);
+  box-shadow: var(--sombra-suave);
+}
+
+.btn-limpiar-filtros {
+  min-height: 48px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.btn-limpiar-filtros:hover:not(:disabled) {
+  background-color: var(--color-texto-secundario);
+  border-color: var(--color-texto-secundario);
+  color: #ffffff;
+}
+
+.btn-limpiar-filtros:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Adaptación a dispositivos móviles */
+
+@media (max-width: 767px) {
+  .catalogo-filtros {
+    padding: 16px;
+  }
+
+  .catalogo-encabezado p {
+    font-size: 0.95rem;
+  }
+
+  .btn-limpiar-filtros {
+    font-size: 1rem;
+  }
+}
