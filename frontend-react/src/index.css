@@ -1185,3 +1185,709 @@ img {
     font-size: 3rem;
   }
 }
+
+
+/* ==================================================
+   CF08 - BOTÓN PRIMARIO REUTILIZABLE
+   ================================================== */
+
+.boton-primario {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 20px;
+  border-radius: var(--radio-borde);
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.boton-primario:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.boton-primario .spinner-border {
+  flex-shrink: 0;
+}
+
+
+/* ==================================================
+   CF09 - CAMPO DE FORMULARIO REUTILIZABLE
+   ================================================== */
+
+.campo-formulario {
+  width: 100%;
+  min-width: 0;
+  margin-bottom: 20px;
+}
+
+.campo-formulario-etiqueta {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--color-texto);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.campo-formulario-obligatorio {
+  color: var(--color-error);
+}
+
+.campo-formulario-input {
+  min-height: 48px;
+  padding: 12px 14px;
+  border-color: var(--color-borde);
+  border-radius: var(--radio-borde);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-size: 1rem;
+}
+
+.campo-formulario-input::placeholder {
+  color: var(--color-texto-secundario);
+  opacity: 1;
+}
+
+.campo-formulario-input:focus {
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.campo-formulario-input.is-invalid {
+  border-color: var(--color-error);
+}
+
+.campo-formulario-input.is-invalid:focus {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+}
+
+.campo-formulario-input:disabled,
+.campo-formulario-input[readonly] {
+  background-color: var(--color-fondo-secundario);
+}
+
+.campo-formulario .input-group {
+  flex-wrap: nowrap;
+}
+
+.campo-formulario-icono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 46px;
+  border-color: var(--color-borde);
+  border-radius: var(--radio-borde);
+  background-color: var(--color-fondo-secundario);
+  color: var(--color-texto-secundario);
+}
+
+.campo-formulario-visibilidad {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  min-height: 48px;
+  border-color: var(--color-borde);
+  border-radius: var(--radio-borde);
+  background-color: var(--color-fondo);
+  color: var(--color-texto-secundario);
+}
+
+.campo-formulario-visibilidad:hover:not(:disabled) {
+  border-color: var(--color-primario);
+  background-color: var(--color-fondo-secundario);
+  color: var(--color-primario);
+}
+
+.campo-formulario-visibilidad:focus-visible {
+  outline: 3px solid var(--color-primario);
+  outline-offset: 2px;
+}
+
+.campo-formulario-ayuda {
+  margin-top: 6px;
+  color: var(--color-texto-secundario);
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+}
+
+.campo-formulario-error {
+  margin-top: 6px;
+  color: var(--color-error);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+
+/* ==================================================
+   CF10 - MENSAJE DE NOTIFICACIÓN REUTILIZABLE
+   ================================================== */
+
+.mensaje-notificacion {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 20px;
+  border-radius: var(--radio-borde);
+}
+
+.mensaje-notificacion-icono {
+  flex-shrink: 0;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.mensaje-notificacion-contenido {
+  flex: 1;
+  min-width: 0;
+}
+
+.mensaje-notificacion-titulo {
+  margin: 0 0 4px;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.mensaje-notificacion-texto {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.mensaje-notificacion-cerrar {
+  box-sizing: border-box;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+}
+
+
+/* ==================================================
+   COMPONENTES DE FORMULARIOS - DISEÑO RESPONSIVO
+   ================================================== */
+
+@media (max-width: 767px) {
+  .boton-primario {
+    min-height: 48px;
+    padding: 12px 16px;
+  }
+
+  .campo-formulario {
+    margin-bottom: 18px;
+  }
+
+  .campo-formulario-input {
+    min-height: 48px;
+    font-size: 1rem;
+  }
+
+  .campo-formulario-icono {
+    min-width: 44px;
+  }
+
+  .campo-formulario-visibilidad {
+    min-width: 48px;
+  }
+
+  .mensaje-notificacion {
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .mensaje-notificacion-texto {
+    font-size: 0.875rem;
+  }
+}
+
+
+/* ==================================================
+   CF30 Y CF32 - PÁGINAS DE AUTENTICACIÓN
+   LOGIN Y REGISTRO
+   ================================================== */
+
+.pagina-autenticacion {
+  width: 100%;
+  background-color: var(--color-fondo-secundario);
+}
+
+.autenticacion-contenedor {
+  width: 100%;
+  min-width: 0;
+  margin: 0 auto;
+}
+
+/* Anchos máximos según el tipo de formulario */
+
+.pagina-login .autenticacion-contenedor {
+  max-width: 480px;
+}
+
+.pagina-registro .autenticacion-contenedor {
+  max-width: 800px;
+}
+
+/* Tarjeta principal de autenticación */
+
+.autenticacion-tarjeta {
+  width: 100%;
+  min-width: 0;
+  padding: 40px;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-borde);
+  background-color: var(--color-fondo);
+  box-shadow: var(--sombra-suave);
+}
+
+/* Encabezado de las páginas */
+
+.autenticacion-encabezado {
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.autenticacion-icono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  background-color: rgba(37, 99, 235, 0.1);
+  color: var(--color-primario);
+  font-size: 2rem;
+}
+
+.autenticacion-titulo {
+  margin-bottom: 12px;
+  color: var(--color-texto);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.autenticacion-descripcion {
+  max-width: 520px;
+  margin: 0 auto;
+  color: var(--color-texto-secundario);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Información de campos obligatorios */
+
+.autenticacion-campos-obligatorios {
+  margin-bottom: 20px;
+  color: var(--color-texto-secundario);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.autenticacion-campos-obligatorios span {
+  color: var(--color-error);
+  font-weight: 700;
+}
+
+/* Formularios compartidos */
+
+.formulario-login,
+.formulario-registro {
+  width: 100%;
+  min-width: 0;
+}
+
+.formulario-login .boton-primario,
+.formulario-registro .boton-primario {
+  min-height: 50px;
+  font-size: 1rem;
+}
+
+.formulario-registro .row > div {
+  min-width: 0;
+}
+
+
+/* ==================================================
+   CF31 - FORMULARIO DE INICIO DE SESIÓN
+   ================================================== */
+
+.login-recuperacion {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -8px;
+  margin-bottom: 24px;
+}
+
+.login-enlace-recuperacion {
+  min-height: 44px;
+  padding: 8px 0;
+  color: var(--color-primario);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: right;
+  text-decoration: none;
+  white-space: normal;
+}
+
+.login-enlace-recuperacion:hover:not(:disabled) {
+  color: var(--color-primario-hover);
+  text-decoration: underline;
+}
+
+
+/* ==================================================
+   ENLACES ENTRE LOGIN Y REGISTRO
+   ================================================== */
+
+.login-registro,
+.registro-login {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px 8px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-borde);
+  text-align: center;
+}
+
+.login-registro p,
+.registro-login p {
+  margin: 0;
+  color: var(--color-texto-secundario);
+  font-size: 0.9rem;
+}
+
+.login-enlace-registro,
+.registro-enlace-login {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 8px 4px;
+  color: var(--color-primario);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-enlace-registro:hover,
+.registro-enlace-login:hover {
+  color: var(--color-primario-hover);
+  text-decoration: underline;
+}
+
+
+/* ==================================================
+   AVISO DE AUTENTICACIÓN Y REGISTRO SIMULADO
+   ================================================== */
+
+.autenticacion-aviso {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-borde);
+  background-color: var(--color-fondo-secundario);
+}
+
+.autenticacion-aviso i {
+  flex-shrink: 0;
+  color: var(--color-primario);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.autenticacion-aviso p {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  color: var(--color-texto-secundario);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.pagina-login .autenticacion-aviso {
+  margin-top: 24px;
+}
+
+.pagina-registro .autenticacion-aviso {
+  margin-bottom: 24px;
+}
+
+
+/* ==================================================
+   NAVEGACIÓN DE AUTENTICACIÓN
+   ================================================== */
+
+.autenticacion-navegacion {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.autenticacion-navegacion .btn {
+  min-height: 44px;
+  padding: 10px 20px;
+  border-radius: var(--radio-borde);
+  font-size: 0.9rem;
+}
+
+
+/* ==================================================
+   AUTENTICACIÓN - DISEÑO RESPONSIVO PARA TABLETS
+   ================================================== */
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .autenticacion-tarjeta {
+    padding: 32px;
+  }
+
+  .pagina-registro .autenticacion-contenedor {
+    max-width: 720px;
+  }
+
+  .autenticacion-encabezado {
+    margin-bottom: 24px;
+  }
+}
+
+
+/* ==================================================
+   AUTENTICACIÓN - DISEÑO RESPONSIVO PARA MÓVILES
+   ================================================== */
+
+@media (max-width: 767px) {
+  .pagina-autenticacion {
+    padding-top: 1.5rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  .pagina-login .autenticacion-contenedor,
+  .pagina-registro .autenticacion-contenedor {
+    max-width: 100%;
+  }
+
+  .autenticacion-tarjeta {
+    padding: 24px 20px;
+  }
+
+  .autenticacion-encabezado {
+    margin-bottom: 24px;
+  }
+
+  .autenticacion-icono {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 16px;
+    font-size: 1.75rem;
+  }
+
+  .autenticacion-descripcion {
+    font-size: 0.9rem;
+  }
+
+  .autenticacion-campos-obligatorios {
+    margin-bottom: 18px;
+  }
+
+  .login-recuperacion {
+    margin-bottom: 20px;
+  }
+
+  .login-registro,
+  .registro-login {
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 20px;
+    padding-top: 16px;
+  }
+
+  .autenticacion-aviso {
+    padding: 12px;
+  }
+
+  .autenticacion-navegacion {
+    margin-top: 20px;
+  }
+
+  .autenticacion-navegacion .btn {
+    width: 100%;
+    min-height: 48px;
+  }
+}
+
+
+/* ==================================================
+   AUTENTICACIÓN - PANTALLAS MÓVILES PEQUEÑAS
+   ================================================== */
+
+@media (max-width: 375px) {
+  .autenticacion-tarjeta {
+    padding: 20px 16px;
+  }
+
+  .autenticacion-icono {
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+  }
+
+  .autenticacion-aviso {
+    gap: 8px;
+  }
+
+  .login-enlace-recuperacion {
+    font-size: 0.85rem;
+  }
+}
+
+
+/* ==================================================
+   CF04 - NAVEGACIÓN SEGÚN AUTENTICACIÓN
+   ================================================== */
+
+.navbar-principal {
+  background-color: var(--color-primario-hover);
+}
+
+.navbar-opciones-usuario {
+  align-items: center;
+  gap: 4px;
+}
+
+.navbar-usuario {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.navbar-nombre-usuario {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.navbar-cerrar-sesion {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--radio-borde);
+  background-color: transparent;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.navbar-cerrar-sesion:hover:not(:disabled) {
+  border-color: #ffffff;
+  background-color: #ffffff;
+  color: var(--color-primario-hover);
+}
+
+.navbar-cerrar-sesion:disabled {
+  opacity: 0.65;
+  color: #ffffff;
+  cursor: not-allowed;
+}
+
+.navbar-principal .nav-link:focus-visible,
+.navbar-principal .navbar-brand:focus-visible,
+.navbar-principal .navbar-toggler:focus-visible,
+.navbar-cerrar-sesion:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+}
+
+.footer-principal a:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+}
+
+
+/* ==================================================
+   NAVEGACIÓN AUTENTICADA - DISEÑO RESPONSIVO
+   ================================================== */
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .navbar-principal .navbar-brand {
+    font-size: 1rem;
+  }
+
+  .navbar-principal .nav-link {
+    font-size: 0.85rem;
+  }
+
+  .navbar-nombre-usuario {
+    max-width: 140px;
+    padding: 8px;
+  }
+
+  .navbar-cerrar-sesion {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar-opciones-usuario {
+    align-items: stretch;
+    gap: 4px;
+    padding-top: 12px;
+    margin-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+  }
+
+  .navbar-opciones-usuario .nav-link {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .navbar-usuario {
+    width: 100%;
+  }
+
+  .navbar-nombre-usuario {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 0;
+  }
+
+  .navbar-cerrar-sesion {
+    width: 100%;
+    min-height: 48px;
+    margin-top: 8px;
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 375px) {
+  .navbar-principal .navbar-brand {
+    font-size: 1rem;
+  }
+}

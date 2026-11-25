@@ -1,13 +1,24 @@
-import './App.css'
-import AppRoutes from './routes/AppRoutes.jsx'
 
 /**
- * CF01 - App
- * Componente principal de TECHSOLUTIONS E-Commerce.
- * Centraliza el acceso al sistema de rutas.
+ * TECHSOLUTIONS E-Commerce
+ * Componente principal de la aplicación.
+ *
+ * Integra los proveedores globales y
+ * el sistema de navegación del frontend.
  */
+
+import './App.css'
+
+import AppRoutes from './routes/AppRoutes.jsx'
+
+import { AuthProvider } from './context/AuthContext.jsx'
+
 function App() {
-  return <AppRoutes />
+  return (
+    <AuthProvider>
+      <AppRoutes />
+    </AuthProvider>
+  )
 }
 
 export default App

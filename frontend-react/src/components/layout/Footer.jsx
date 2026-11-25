@@ -1,123 +1,200 @@
-import { Link } from 'react-router-dom'
 
 /**
- * CF05 - Footer
- * Pie de página de TECHSOLUTIONS E-Commerce.
- * Presenta información de la tienda, enlaces
- * de navegación y datos de contacto.
+ * TECHSOLUTIONS E-Commerce
+ * CF05 - Pie de página.
+ *
+ * Presenta información institucional,
+ * enlaces rápidos y datos de contacto.
  */
+
+import { Link } from 'react-router-dom'
+
+import { useAuth } from '../../hooks/useAuth.js'
+
 function Footer() {
   const anioActual = new Date().getFullYear()
 
+  const {
+    estaAutenticado,
+    esCliente,
+    esAdministrador,
+  } = useAuth()
+
   return (
-    <footer className="footer-techsolutions text-white pt-5 pb-3">
+    <footer className="footer-principal bg-dark text-white pt-5 pb-3">
+
       <div className="container">
+
         <div className="row g-4">
 
-          {/* Información de la tienda */}
+          {/* Información institucional */}
+
           <div className="col-12 col-md-4">
-            <h2 className="h5 text-white fw-bold">
-              <i
-                className="bi bi-pc-display me-2"
-                aria-hidden="true"
-              ></i>
+
+            <h2 className="h5 mb-3">
               TECHSOLUTIONS E-Commerce
             </h2>
 
-            <p className="footer-texto">
-              Tienda virtual especializada en computadores,
-              celulares, accesorios y productos tecnológicos.
+            <p>
+              Tu tienda de tecnología en línea.
+              Encuentra productos para el trabajo,
+              el estudio y el entretenimiento.
             </p>
 
-            <p className="footer-texto">
-              Tecnología, innovación y soluciones a tu alcance.
-            </p>
           </div>
 
-          {/* Enlaces de navegación */}
+          {/* Enlaces rápidos */}
+
           <div className="col-12 col-md-4">
-            <h2 className="h5 text-white fw-bold">
+
+            <h2 className="h5 mb-3">
               Enlaces rápidos
             </h2>
 
-            <nav aria-label="Navegación del pie de página">
-              <ul className="list-unstyled">
-                <li>
-                  <Link to="/">Inicio</Link>
-                </li>
+            <ul className="list-unstyled">
 
-                <li>
-                  <Link to="/catalogo">Productos</Link>
-                </li>
+              <li className="mb-2">
+                <Link
+                  to="/"
+                  className="text-white text-decoration-none"
+                >
+                  Inicio
+                </Link>
+              </li>
 
-                <li>
-                  <Link to="/carrito">Carrito de compras</Link>
-                </li>
+              <li className="mb-2">
+                <Link
+                  to="/catalogo"
+                  className="text-white text-decoration-none"
+                >
+                  Productos
+                </Link>
+              </li>
 
-                <li>
-                  <Link to="/login">Iniciar sesión</Link>
+              {!esAdministrador && (
+                <li className="mb-2">
+                  <Link
+                    to="/carrito"
+                    className="text-white text-decoration-none"
+                  >
+                    Carrito de compras
+                  </Link>
                 </li>
+              )}
 
-                <li>
-                  <Link to="/registro">Registrarse</Link>
-                </li>
+              {!estaAutenticado && (
+                <>
+                  <li className="mb-2">
+                    <Link
+                      to="/login"
+                      className="text-white text-decoration-none"
+                    >
+                      Iniciar sesión
+                    </Link>
+                  </li>
 
-                <li>
-                  <Link to="/contacto">Contacto</Link>
+                  <li className="mb-2">
+                    <Link
+                      to="/registro"
+                      className="text-white text-decoration-none"
+                    >
+                      Registrarse
+                    </Link>
+                  </li>
+                </>
+              )}
+
+              {esCliente && (
+                <li className="mb-2">
+                  <Link
+                    to="/cliente"
+                    className="text-white text-decoration-none"
+                  >
+                    Mi cuenta
+                  </Link>
                 </li>
-              </ul>
-            </nav>
+              )}
+
+              {esAdministrador && (
+                <li className="mb-2">
+                  <Link
+                    to="/admin"
+                    className="text-white text-decoration-none"
+                  >
+                    Administración
+                  </Link>
+                </li>
+              )}
+
+              <li className="mb-2">
+                <Link
+                  to="/contacto"
+                  className="text-white text-decoration-none"
+                >
+                  Contacto
+                </Link>
+              </li>
+
+            </ul>
+
           </div>
 
           {/* Información de contacto */}
+
           <div className="col-12 col-md-4">
-            <h2 className="h5 text-white fw-bold">
+
+            <h2 className="h5 mb-3">
               Contáctanos
             </h2>
 
-            <ul className="list-unstyled footer-texto">
-              <li className="mb-2">
-                <i
-                  className="bi bi-geo-alt me-2"
-                  aria-hidden="true"
-                ></i>
-                Bogotá, Colombia
-              </li>
+            <p className="mb-2">
+              <i
+                className="bi bi-geo-alt me-2"
+                aria-hidden="true"
+              ></i>
 
-              <li className="mb-2">
-                <i
-                  className="bi bi-telephone me-2"
-                  aria-hidden="true"
-                ></i>
-                +57 300 123 4567
-              </li>
+              Bogotá, Colombia
+            </p>
 
-              <li className="mb-2">
-                <i
-                  className="bi bi-envelope me-2"
-                  aria-hidden="true"
-                ></i>
-                contacto@techsolutions.com
-              </li>
-            </ul>
+            <p className="mb-2">
+              <i
+                className="bi bi-telephone me-2"
+                aria-hidden="true"
+              ></i>
+
+              +57 300 123 4567
+            </p>
+
+            <p className="mb-2 text-break">
+              <i
+                className="bi bi-envelope me-2"
+                aria-hidden="true"
+              ></i>
+
+              contacto@techsolutions.com
+            </p>
+
           </div>
 
         </div>
 
-        <hr className="footer-separador" />
+        <hr />
 
-        {/* Derechos reservados */}
         <div className="text-center">
-          <p className="footer-texto mb-1">
-            © {anioActual} TECHSOLUTIONS E-Commerce.
+
+          <p className="mb-1">
+            &copy; {anioActual} TECHSOLUTIONS E-Commerce.
             Todos los derechos reservados.
           </p>
 
-          <p className="footer-texto small mb-0">
-            Proyecto formativo — Análisis y Desarrollo de Software.
+          <p className="small mb-0">
+            Proyecto formativo SENA.
           </p>
+
         </div>
+
       </div>
+
     </footer>
   )
 }
