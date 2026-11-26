@@ -1,8 +1,11 @@
 ﻿PROYECTO: TECHSOLUTIONS-ECommerce
-EVIDENCIA: GA7-220501096-AA2-EV01
-PROGRAMA: Analisis y Desarrollo de Software - SENA
+EVIDENCIA: GA7-220501096-AA4-EV03 - Componente Frontend
+INSTITUCIÓN: Servicio Nacional de Aprendizaje (SENA)
+PROGRAMA: Análisis y Desarrollo de Software
+APRENDIZ: Jefferson Sosa Borrero
 
 REPOSITORIO GITHUB:
 https://github.com/jsborrero11-hash/TECHSOLUTIONS-ECommerce
 
-RAMA PRINCIPAL: master
+RAMA DE ENTREGA: evidencia-ga7-aa4-frontend-react
+https://github.com/jsborrero11-hash/TECHSOLUTIONS-ECommerce/tree/evidencia-ga7-aa4-frontend-react

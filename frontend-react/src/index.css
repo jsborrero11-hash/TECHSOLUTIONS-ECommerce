@@ -1026,34 +1026,6 @@ img {
 }
 
 /* ==================================================
-   Aviso temporal de integración
-   ================================================== */
-
-.detalle-aviso {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 14px 16px;
-  margin-top: 16px;
-  background-color: var(--color-fondo-secundario);
-  border: 1px solid var(--color-borde);
-  border-radius: var(--radio-borde);
-  color: var(--color-texto-secundario);
-}
-
-.detalle-aviso i {
-  flex-shrink: 0;
-  color: var(--color-primario);
-  font-size: 1.1rem;
-}
-
-.detalle-aviso p {
-  margin-bottom: 0;
-  font-size: 0.9rem;
-  line-height: 1.6;
-}
-
-/* ==================================================
    Navegación hacia el catálogo
    ================================================== */
 
@@ -1167,10 +1139,6 @@ img {
   .detalle-acciones .btn {
     min-height: 48px;
     padding: 12px 16px;
-  }
-
-  .detalle-aviso {
-    padding: 12px;
   }
 
   .detalle-navegacion .btn {

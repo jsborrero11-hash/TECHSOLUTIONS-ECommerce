@@ -1,5 +1,42 @@
 # TECHSOLUTIONS-ECommerce
 
+## Entrega vigente · GA7-220501096-AA4-EV03
+
+- **Institución:** Servicio Nacional de Aprendizaje (SENA)
+- **Programa:** Análisis y Desarrollo de Software
+- **Aprendiz:** Jefferson Sosa Borrero
+- **Evidencia:** GA7-220501096-AA4-EV03 — Componente Frontend
+
+TECHSOLUTIONS-ECommerce presenta un catálogo de productos tecnológicos y un recorrido de compra académico, desde la búsqueda hasta la factura simulada. El frontend usa React 19, React Router 7, Vite 8, Bootstrap 5, Bootstrap Icons, Inter y ESLint. La aplicación funciona con el catálogo incluido y almacenamiento local del navegador.
+
+- `frontend-react/` contiene el código, las imágenes públicas, la configuración y el lockfile. Las rutas y páginas se apoyan en componentes, contextos, hooks, servicios y utilidades.
+- `qa/` contiene las matrices, scripts y capturas de 438 y EV03.
+- El repositorio conserva el prototipo HTML de referencia y el módulo Java de evidencias anteriores. El frontend funciona de forma independiente.
+
+### Inicio rápido
+
+Usar Node.js 24.x con npm. Desde la raíz del proyecto o del ZIP extraído:
+
+```sh
+cd frontend-react
+npm ci
+npm run dev
+```
+
+Abrir la URL que imprime Vite, normalmente `http://localhost:5173/`. Desde esa misma carpeta, ejecutar `npm run lint` y `npm run build` para validar y compilar. En PowerShell, usar `npm.cmd` si la política de ejecución bloquea `npm.ps1`.
+
+El frontend ofrece inicio, catálogo con filtros, detalle y relacionados, acceso por rol, panel del cliente, administración de demostración, contacto, carrito, pago y factura simulados, registro simulado y página 404. La guía del frontend contiene las cuentas ficticias, las rutas y los límites de cada simulación. [Guía de ejecución](frontend-react/README.md)
+
+La actividad 438 documenta el flujo de compra, teclado, responsive y toque emulado. EV03.4 documenta las pantallas nuevas, las redirecciones por rol y la regresión incremental. El prototipo HTML del repositorio se usó como referencia; la versión aprobada y los requisitos originales siguen pendientes de respaldo documental. [QA de 438](qa/seguimiento-actividad-438.md) · [Matriz maestra EV03](qa/seguimiento-ev03.md)
+
+**Repositorio y rama de entrega:** [TECHSOLUTIONS-ECommerce · evidencia-ga7-aa4-frontend-react](https://github.com/jsborrero11-hash/TECHSOLUTIONS-ECommerce/tree/evidencia-ga7-aa4-frontend-react)
+
+---
+
+## Documentación histórica · GA7-220501096-AA2-EV01
+
+Las siguientes secciones describen el módulo Java y las instrucciones de aquella evidencia. La entrega Frontend EV03 se ejecuta siguiendo la guía anterior.
+
 ## Proyecto de software – SENA
 
 **Programa de formación:** Análisis y Desarrollo de Software (ADSO)  

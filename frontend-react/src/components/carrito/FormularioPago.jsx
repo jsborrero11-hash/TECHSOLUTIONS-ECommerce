@@ -153,7 +153,7 @@ function FormularioPago({
   /**
    * Control inmediato de confirmaciones simultáneas.
    *
-   * La confirmación provisional es síncrona,
+   * El registro local del pedido es síncrono,
    * por lo que no se utilizan temporizadores
    * ni estados de carga artificiales.
    */
@@ -279,7 +279,7 @@ function FormularioPago({
   }
 
   /**
-   * Valida y prepara provisionalmente la compra.
+   * Valida el carrito antes de registrar el pedido simulado.
    */
   function manejarConfirmarCompra(evento) {
     evento.preventDefault()

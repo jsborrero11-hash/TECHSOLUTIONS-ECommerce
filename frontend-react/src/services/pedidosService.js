@@ -6,6 +6,22 @@ import {
 import { validarCompra, tieneErrores } from '../utils/validaciones.js'
 import { calcularResumenCompra } from '../utils/calculosCompra.js'
 
+export function consultarPedidos(idUsuario) {
+  const lectura = obtenerStorageUsuarioDetallado(CLAVES_STORAGE.PEDIDOS, idUsuario)
+  const pedidos = lectura.existe ? lectura.valor : []
+  if (!lectura.exito || !Array.isArray(pedidos) || !pedidos.every(pedido =>
+    pedido?.cliente?.id === idUsuario &&
+    typeof pedido.cliente.nombre === 'string' &&
+    Number.isSafeInteger(pedido.id) &&
+    Array.isArray(pedido.productos) &&
+    pedido.productos.every(producto => typeof producto?.nombre === 'string')
+  )) {
+    return { exito: false, mensaje: 'No fue posible recuperar tus pedidos.' }
+  }
+
+  return { exito: true, pedidos }
+}
+
 export function registrarPedido(cliente, compra) {
   if (
     cliente?.id !== compra?.idUsuario ||
@@ -15,12 +31,10 @@ export function registrarPedido(cliente, compra) {
   }
 
   const clave = CLAVES_STORAGE.PEDIDOS
-  const lectura = obtenerStorageUsuarioDetallado(clave, cliente.id)
-  if (!lectura.exito || (lectura.existe && !Array.isArray(lectura.valor))) {
-    return { exito: false, mensaje: 'No fue posible recuperar tus pedidos.' }
-  }
+  const consulta = consultarPedidos(cliente.id)
+  if (!consulta.exito) return consulta
 
-  const pedidos = lectura.valor ?? []
+  const { pedidos } = consulta
   const { subtotal, iva, costoEnvio, total } = calcularResumenCompra(
     compra.productos,
     compra.idMetodoEnvio,

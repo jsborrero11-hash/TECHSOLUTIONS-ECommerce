@@ -10,7 +10,6 @@
 import {
   Routes,
   Route,
-  Link,
 } from 'react-router-dom'
 
 import Layout from '../components/layout/Layout.jsx'
@@ -21,42 +20,14 @@ import DetalleProducto from '../pages/DetalleProducto.jsx'
 import Login from '../pages/Login.jsx'
 import Registro from '../pages/Registro.jsx'
 import Carrito from '../pages/Carrito.jsx'
+import Contacto from '../pages/Contacto.jsx'
+import PanelCliente from '../pages/PanelCliente.jsx'
+import PanelAdministrador from '../pages/PanelAdministrador.jsx'
+import NoEncontrada from '../pages/NoEncontrada.jsx'
 
 import RutaProtegida from './RutaProtegida.jsx'
 
 import { ROLES } from '../services/authService.js'
-
-/**
- * Presenta las secciones que todavía
- * se encuentran en desarrollo.
- */
-function PaginaProvisional({ titulo }) {
-  return (
-    <section className="container py-5 text-center">
-
-      <i
-        className="bi bi-tools fs-1 text-primary"
-        aria-hidden="true"
-      ></i>
-
-      <h1 className="mt-3">
-        {titulo}
-      </h1>
-
-      <p className="texto-secundario">
-        Esta sección se encuentra en desarrollo.
-      </p>
-
-      <Link
-        to="/"
-        className="btn btn-primary mt-3"
-      >
-        Volver al inicio
-      </Link>
-
-    </section>
-  )
-}
 
 /**
  * Define las rutas públicas y protegidas.
@@ -86,9 +57,7 @@ function AppRoutes() {
 
         <Route
           path="contacto"
-          element={
-            <PaginaProvisional titulo="Contacto" />
-          }
+          element={<Contacto />}
         />
 
         {/* Rutas de autenticación */}
@@ -120,11 +89,7 @@ function AppRoutes() {
 
           <Route
             path="cliente"
-            element={
-              <PaginaProvisional
-                titulo="Panel del cliente"
-              />
-            }
+            element={<PanelCliente />}
           />
 
         </Route>
@@ -141,11 +106,7 @@ function AppRoutes() {
 
           <Route
             path="admin"
-            element={
-              <PaginaProvisional
-                titulo="Panel de administración"
-              />
-            }
+            element={<PanelAdministrador />}
           />
 
         </Route>
@@ -154,11 +115,7 @@ function AppRoutes() {
 
         <Route
           path="*"
-          element={
-            <PaginaProvisional
-              titulo="Página no encontrada"
-            />
-          }
+          element={<NoEncontrada />}
         />
 
       </Route>

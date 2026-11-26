@@ -1,5 +1,5 @@
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 
 import { productos } from '../data/productos.js'
@@ -7,6 +7,7 @@ import { formatoMoneda } from '../utils/formatoMoneda.js'
 
 import Breadcrumb from '../components/common/Breadcrumb.jsx'
 import SelectorCantidad from '../components/common/SelectorCantidad.jsx'
+import ProductoCard from '../components/productos/ProductoCard.jsx'
 import MensajeNotificacion from '../components/common/MensajeNotificacion.jsx'
 import { useAuth } from '../hooks/useAuth.js'
 import { useCarrito } from '../hooks/useCarrito.js'
@@ -96,6 +97,7 @@ function InformacionProducto({ producto }) {
 
               <h1
                 id="titulo-detalle-producto"
+                tabIndex={-1}
                 className="detalle-nombre"
               >
                 {producto.nombre}
@@ -240,6 +242,14 @@ function DetalleProducto() {
 
   // Recupera el parámetro dinámico de la ruta.
   const { id } = useParams()
+  const idAnterior = useRef(id)
+
+  useEffect(() => {
+    if (idAnterior.current !== id) {
+      idAnterior.current = id
+      document.getElementById('titulo-detalle-producto')?.focus()
+    }
+  }, [id])
 
   // Busca el producto correspondiente al identificador.
   const producto = productos.find(
@@ -297,12 +307,25 @@ function DetalleProducto() {
     )
   }
 
+  const relacionados = productos.filter(
+    elemento => elemento.id !== producto.id && elemento.categoria === producto.categoria,
+  )
+
   // La clave reinicia la cantidad cuando cambia el producto.
   return (
-    <InformacionProducto
-      key={producto.id}
-      producto={producto}
-    />
+    <>
+      <InformacionProducto key={producto.id} producto={producto} />
+      {relacionados.length > 0 && (
+        <section className="container pb-5" aria-labelledby="titulo-relacionados">
+          <h2 className="h4 mb-3" id="titulo-relacionados">Productos relacionados</h2>
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+            {relacionados.map(elemento => (
+              <div key={elemento.id} className="col"><ProductoCard producto={elemento} /></div>
+            ))}
+          </div>
+        </section>
+      )}
+    </>
   )
 }
 
