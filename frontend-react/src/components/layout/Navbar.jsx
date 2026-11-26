@@ -15,6 +15,7 @@ import {
 } from 'react-router-dom'
 
 import { useAuth } from '../../hooks/useAuth.js'
+import { useCarrito } from '../../hooks/useCarrito.js'
 
 import MensajeNotificacion from '../common/MensajeNotificacion.jsx'
 
@@ -29,6 +30,7 @@ function Navbar() {
     cargando,
     cerrarSesion,
   } = useAuth()
+  const { cantidadTotal } = useCarrito()
 
   const [menuAbierto, setMenuAbierto] =
     useState(false)
@@ -174,6 +176,12 @@ function Navbar() {
                     ></i>
 
                     Carrito
+                    {esCliente && (
+                      <span className="badge text-bg-primary ms-2">
+                        <span className="visually-hidden">Unidades </span>
+                        {cantidadTotal}
+                      </span>
+                    )}
                   </NavLink>
                 </li>
               )}

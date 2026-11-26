@@ -1,17 +1,16 @@
 
 import { useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 
 import { productos } from '../data/productos.js'
 import { formatoMoneda } from '../utils/formatoMoneda.js'
 
 import Breadcrumb from '../components/common/Breadcrumb.jsx'
 import SelectorCantidad from '../components/common/SelectorCantidad.jsx'
-
-// Límites temporales para la selección de cantidades.
-// Posteriormente se utilizará el inventario real.
-const CANTIDAD_MINIMA = 1
-const CANTIDAD_MAXIMA = 99
+import MensajeNotificacion from '../components/common/MensajeNotificacion.jsx'
+import { useAuth } from '../hooks/useAuth.js'
+import { useCarrito } from '../hooks/useCarrito.js'
+import { CANTIDAD_MINIMA, CANTIDAD_MAXIMA } from '../utils/calculosCompra.js'
 
 /**
  * Presenta la información del producto encontrado
@@ -23,6 +22,25 @@ const CANTIDAD_MAXIMA = 99
 function InformacionProducto({ producto }) {
 
   const [cantidad, setCantidad] = useState(CANTIDAD_MINIMA)
+  const [notificacion, setNotificacion] = useState(null)
+  const { esCliente, esAdministrador } = useAuth()
+  const { agregarProducto } = useCarrito()
+  const navigate = useNavigate()
+
+  function agregarSeleccion(irAlCarrito) {
+    if (!esCliente) {
+      navigate('/login')
+      return
+    }
+
+    const resultado = agregarProducto(producto.id, cantidad)
+    if (resultado.exito && irAlCarrito) {
+      navigate('/carrito')
+      return
+    }
+
+    setNotificacion(resultado)
+  }
 
   // Calcula el importe según la cantidad seleccionada.
   const importe = producto.precio * cantidad
@@ -140,15 +158,13 @@ function InformacionProducto({ producto }) {
 
               </div>
 
-              {/* Acciones pendientes de integración */}
-
               <div className="detalle-acciones d-grid gap-3">
 
                 <button
                   type="button"
                   className="btn btn-primary btn-lg"
-                  disabled
-                  aria-describedby="aviso-acciones-compra"
+                  disabled={esAdministrador}
+                  onClick={() => agregarSeleccion(false)}
                 >
                   <i
                     className="bi bi-cart-plus me-2"
@@ -160,8 +176,8 @@ function InformacionProducto({ producto }) {
                 <button
                   type="button"
                   className="btn btn-outline-primary btn-lg"
-                  disabled
-                  aria-describedby="aviso-acciones-compra"
+                  disabled={esAdministrador}
+                  onClick={() => agregarSeleccion(true)}
                 >
                   <i
                     className="bi bi-bag-check me-2"
@@ -172,23 +188,18 @@ function InformacionProducto({ producto }) {
 
               </div>
 
-              {/* Aviso temporal del proceso de compra */}
-
-              <div
-                id="aviso-acciones-compra"
-                className="detalle-aviso"
-              >
-                <i
-                  className="bi bi-info-circle"
-                  aria-hidden="true"
-                ></i>
-
-                <p>
-                  Las opciones de compra estarán disponibles
-                  cuando se complete la integración del
-                  carrito de compras.
+              {!esCliente && (
+                <p className="mt-3 texto-secundario">
+                  Inicia sesión como cliente para comprar.
                 </p>
-              </div>
+              )}
+              {notificacion && (
+                <MensajeNotificacion
+                  tipo={notificacion.exito ? 'exito' : 'error'}
+                  mensaje={notificacion.mensaje}
+                  onCerrar={() => setNotificacion(null)}
+                />
+              )}
 
             </div>
 

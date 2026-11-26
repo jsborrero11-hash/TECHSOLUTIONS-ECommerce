@@ -1,22 +1,15 @@
 
-/**
- * TECHSOLUTIONS E-Commerce
- * Componente principal de la aplicación.
- *
- * Integra los proveedores globales y
- * el sistema de navegación del frontend.
- */
-
-import './App.css'
-
-import AppRoutes from './routes/AppRoutes.jsx'
-
 import { AuthProvider } from './context/AuthContext.jsx'
+import { CarritoProvider } from './context/CarritoContext.jsx'
+import AppRoutes from './routes/AppRoutes'
+import './App.css'
 
 function App() {
   return (
     <AuthProvider>
-      <AppRoutes />
+      <CarritoProvider>
+        <AppRoutes />
+      </CarritoProvider>
     </AuthProvider>
   )
 }

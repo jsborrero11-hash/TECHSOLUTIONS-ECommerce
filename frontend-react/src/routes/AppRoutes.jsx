@@ -20,6 +20,7 @@ import Catalogo from '../pages/Catalogo.jsx'
 import DetalleProducto from '../pages/DetalleProducto.jsx'
 import Login from '../pages/Login.jsx'
 import Registro from '../pages/Registro.jsx'
+import Carrito from '../pages/Carrito.jsx'
 
 import RutaProtegida from './RutaProtegida.jsx'
 
@@ -114,11 +115,7 @@ function AppRoutes() {
 
           <Route
             path="carrito"
-            element={
-              <PaginaProvisional
-                titulo="Carrito de compras"
-              />
-            }
+            element={<Carrito />}
           />
 
           <Route

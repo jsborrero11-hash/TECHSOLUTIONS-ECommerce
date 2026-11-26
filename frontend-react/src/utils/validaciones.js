@@ -7,6 +7,13 @@
  * por los diferentes módulos de la aplicación.
  */
 
+import {
+  esCantidadValida,
+  esPrecioValido,
+  obtenerMetodoEnvio,
+  obtenerMetodoPago,
+} from './calculosCompra'
+
 export const LONGITUD_MINIMA_CONTRASENA = 8
 
 /**
@@ -147,6 +154,73 @@ export function validarRegistro(datos = {}) {
   ) {
     errores.confirmarContrasena =
       'Las contraseñas no coinciden.'
+  }
+
+  return errores
+}
+
+/**
+ * Valida la información necesaria para confirmar
+ * una compra simulada.
+ *
+ * No modifica el carrito, no accede al almacenamiento
+ * y no realiza transacciones financieras.
+ *
+ * Las condiciones de autenticación, autorización
+ * y recuperación del carrito deben comprobarse
+ * desde el contexto y el flujo de confirmación.
+ */
+export function validarCompra(datos = {}) {
+  const errores = {}
+
+  const {
+    idUsuario,
+    productos,
+    idMetodoEnvio,
+    idMetodoPago,
+  } = datos ?? {}
+
+  // Validación del identificador del cliente.
+  if (
+    !Number.isSafeInteger(idUsuario) ||
+    idUsuario <= 0
+  ) {
+    errores.idUsuario =
+      'No se ha identificado un cliente válido.'
+  }
+
+  // Validación de los productos del carrito.
+  if (
+    !Array.isArray(productos) ||
+    productos.length === 0
+  ) {
+    errores.productos =
+      'El carrito debe contener al menos un producto.'
+  } else {
+    const productosValidos = productos.every(
+      (producto) =>
+        Number.isSafeInteger(producto?.id) &&
+        producto.id > 0 &&
+        esCantidadValida(producto.cantidad) &&
+        esPrecioValido(producto.precio),
+    )
+
+    if (!productosValidos) {
+      errores.productos =
+        'El carrito contiene productos con información no válida.'
+    }
+  }
+
+  // Validación del método de envío.
+  if (!obtenerMetodoEnvio(idMetodoEnvio)) {
+    errores.idMetodoEnvio =
+      'Selecciona un método de envío válido.'
+  }
+
+  // Validación del método de pago.
+  if (!obtenerMetodoPago(idMetodoPago)) {
+    errores.idMetodoPago =
+      'Selecciona un método de pago válido.'
   }
 
   return errores
