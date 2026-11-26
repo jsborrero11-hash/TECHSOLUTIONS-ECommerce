@@ -5,7 +5,7 @@
 - **Aprendiz:** Jefferson Sosa Borrero
 - **Evidencia:** GA7-220501096-AA4-EV03
 
-El frontend permite explorar productos tecnológicos y completar un recorrido académico de compra, desde el catálogo hasta la visualización de una factura simulada. El proyecto conserva como antecedentes el prototipo HTML, la documentación del CRUD Java y la actividad 438 de carrito, pago y factura. [README principal](../README.md)
+El frontend permite explorar productos tecnológicos y completar un recorrido académico de compra, desde el catálogo hasta la visualización de una factura simulada. El proyecto conserva como antecedentes el prototipo HTML, la documentación del CRUD Java y la actividad 82 de carrito, pago y factura. [README principal](../README.md)
 
 ## Instalación y ejecución
 
@@ -62,6 +62,6 @@ React 19 y React Router 7 organizan la SPA. Vite 8 compila la aplicación. Boots
 
 ## QA y entrega
 
-La actividad 438 validó compra, persistencia, teclado y diseño responsive. EV03.4 cubrió cliente, administrador, contacto, 404, relacionados, filtros, registro simulado y regresión local. Las evidencias incluyen capturas a diferentes anchos y scripts reproducibles. La prueba táctil física de 438 quedó como comprobación complementaria sin ejecutar. [QA de 438](../qa/seguimiento-actividad-438.md) · [QA y auditoría EV03](../qa/seguimiento-ev03.md)
+La actividad 82 validó compra, persistencia, teclado y diseño responsive. EV03.4 cubrió cliente, administrador, contacto, 404, relacionados, filtros, registro simulado y regresión local. Las evidencias incluyen capturas a diferentes anchos y scripts reproducibles. La prueba táctil física de 82 quedó como comprobación complementaria sin ejecutar. [QA de 82](../qa/seguimiento-actividad-82.md) · [QA y auditoría EV03](../qa/seguimiento-ev03.md)
 
 La entrega utiliza la rama `evidencia-ga7-aa4-frontend-react`. [Repositorio y rama en GitHub](https://github.com/jsborrero11-hash/TECHSOLUTIONS-ECommerce/tree/evidencia-ga7-aa4-frontend-react)

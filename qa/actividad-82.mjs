@@ -10,9 +10,9 @@ const [chrome, sitio = 'http://127.0.0.1:4380', modo] = process.argv.slice(2)
 assert.ok(chrome, 'Indica la ruta al ejecutable de Chrome o Chromium.')
 const claveDemo = process.env.TECHSOLUTIONS_QA_PASSWORD
 assert.ok(claveDemo, 'Configura TECHSOLUTIONS_QA_PASSWORD con la clave de la cuenta ficticia.')
-const evidencias = resolve('qa/evidencias-438')
+const evidencias = resolve('qa/evidencias-82')
 await mkdir(evidencias, { recursive: true })
-const perfil = await mkdtemp(join(tmpdir(), 'techsolutions-438-'))
+const perfil = await mkdtemp(join(tmpdir(), 'techsolutions-82-'))
 const navegador = spawn(chrome, [
   ...(process.env.TECHSOLUTIONS_QA_VISIBLE === '1' ? [] : ['--headless']),
   '--disable-gpu', '--remote-debugging-port=0', '--window-size=1440,1000',
@@ -261,7 +261,7 @@ try {
     await importeVisible(4180000)
     assert.equal((await leer(clavePedidos)).length, 1)
     assert.deepEqual(errores, [])
-    console.log('438-QA-03 aprobado · compra completa con Tab, Shift+Tab, flechas, Espacio y Enter')
+    console.log('82-QA-03 aprobado · compra completa con Tab, Shift+Tab, flechas, Espacio y Enter')
   }
 
   await comando('Page.enable')
@@ -284,7 +284,7 @@ try {
   await titulo('Panel del cliente')
   assert.match(await evaluar(() => document.querySelector('nav').innerText), /Cliente Demo/)
   await captura('01-panel-cliente')
-  console.log('438-QA-01 aprobado · formulario real, teclado y panel de cliente')
+  console.log('82-QA-01 aprobado · formulario real, teclado y panel de cliente')
 
   await ajustarAncho(390)
   await comando('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 1 })
@@ -315,7 +315,7 @@ try {
   assert.equal((await leer(claveCarrito))[0].cantidad, 1)
   await importeVisible(3500000, 665000, 4165000)
   assert.equal(await botonDeshabilitado('Continuar compra'), true)
-  console.log('438-QA-02 aprobado · búsqueda, detalle, alta, contador e importes')
+  console.log('82-QA-02 aprobado · búsqueda, detalle, alta, contador e importes')
 
   await enfocar('input[type="radio"]')
   await tecla('ArrowRight', 39)
@@ -337,7 +337,7 @@ try {
   await comprobarAnchos('pago')
   await enfocar('button', 'Confirmar compra')
   await captura('03-foco-confirmar')
-  console.log(`438-QA-03 funcional aprobado · flecha en envío: ${envioPorFlecha}, espacio en pago: ${pagoPorEspacio}, foco inicial y métodos obligatorios verificados`)
+  console.log(`82-QA-03 funcional aprobado · flecha en envío: ${envioPorFlecha}, espacio en pago: ${pagoPorEspacio}, foco inicial y métodos obligatorios verificados`)
 
   await click('button', 'Confirmar compra')
   await titulo('Factura del pedido')
@@ -357,10 +357,10 @@ try {
   assert.deepEqual(await leer(clavePedidos), pedidos)
   assert.equal(await botonDeshabilitado('Continuar compra'), true)
   await captura('04-carrito-vacio')
-  console.log('438-QA-04 aprobado · factura, foco, vaciado y persistencia')
+  console.log('82-QA-04 aprobado · factura, foco, vaciado y persistencia')
 
   assert.deepEqual(errores, [])
-  console.log('438-QA-05 aprobado · tres vistas en cuatro anchos y navegación mediante toque emulado')
+  console.log('82-QA-05 aprobado · tres vistas en cuatro anchos y navegación mediante toque emulado')
   }
 
 } finally {
@@ -371,6 +371,6 @@ try {
     await Promise.race([salida, esperar(1500)])
   }
   assert.equal(dirname(resolve(perfil)), resolve(tmpdir()))
-  assert.ok(basename(perfil).startsWith('techsolutions-438-'))
+  assert.ok(basename(perfil).startsWith('techsolutions-82-'))
   await rm(perfil, { recursive: true, force: true, maxRetries: 4, retryDelay: 150 })
 }
