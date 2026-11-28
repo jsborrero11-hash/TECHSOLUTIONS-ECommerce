@@ -1,0 +1,13 @@
+DDL original verificado: categoria
+DDL original verificado: usuario
+DDL original verificado: producto
+DDL original verificado: carrito
+DDL original verificado: detalle_carrito
+DDL original verificado: pedido
+DDL original verificado: detalle_pedido
+QA autentica con secreto: SI
+Cuenta operativa: solo USAGE global y SELECT/INSERT/UPDATE/DELETE en techsolutions_test
+schema QA efectivo:
+DATABASE()	VERSION()	@@port
+techsolutions_test	8.4.3	3306
+UPDATE original denegado: EXPLAIN, 1142

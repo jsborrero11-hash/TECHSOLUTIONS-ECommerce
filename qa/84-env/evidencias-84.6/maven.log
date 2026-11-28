@@ -1,0 +1,58 @@
+[INFO] Scanning for projects...
+[INFO]
+[INFO] -------------------< com.techsolutions:backend-java >-------------------
+[INFO] Building backend-java 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] Loaded 24664 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO]
+[INFO] --- clean:3.5.0:clean (default-clean) @ backend-java ---
+[INFO] Deleting backend-java\target
+[INFO]
+[INFO] --- resources:3.5.0:resources (default-resources) @ backend-java ---
+[INFO] skip non existing resourceDirectory backend-java\src\main\resources
+[INFO]
+[INFO] --- compiler:3.16.0:compile (default-compile) @ backend-java ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 27 source files with javac [debug release 21] to target\classes
+[INFO]
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ backend-java ---
+[INFO] skip non existing resourceDirectory backend-java\src\test\resources
+[INFO]
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ backend-java ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 4 source files with javac [debug release 21] to target\test-classes
+[INFO]
+[INFO] --- surefire:3.5.2:test (default-test) @ backend-java ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.techsolutions.ecommerce.modelo.ProductoTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.029 s -- in com.techsolutions.ecommerce.modelo.ProductoTest
+[INFO] Running com.techsolutions.ecommerce.seguridad.SeguridadTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.546 s -- in com.techsolutions.ecommerce.seguridad.SeguridadTest
+[INFO] Running com.techsolutions.ecommerce.servicio.CarritoLimiteIntegracionTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.636 s -- in com.techsolutions.ecommerce.servicio.CarritoLimiteIntegracionTest
+[INFO] Running com.techsolutions.ecommerce.servicio.PedidosIntegracionTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.072 s -- in com.techsolutions.ecommerce.servicio.PedidosIntegracionTest
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO]
+[INFO] --- war:3.4.0:war (default-war) @ backend-java ---
+[INFO] Packaging webapp
+[INFO] Assembling webapp [backend-java] in [backend-java\target\backend-java-1.0-SNAPSHOT]
+[INFO] Processing war project
+[INFO] Copying webapp resources [backend-java\src\main\webapp]
+[INFO] Building war: backend-java\target\backend-java-1.0-SNAPSHOT.war
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.673 s
+[INFO] Finished at: 2026-11-27T20:16:16-05:00
+[INFO] ------------------------------------------------------------------------

@@ -1,0 +1,164 @@
+84-11 sin sesión GET 401
+84-08 origen GET 403
+84-08 GET 200
+84-09 CSRF POST 403
+84-09 rol inyectado POST 400
+84-09 POST 201
+84-09 correo duplicado POST 409
+84-10 rechaza credencial POST 401
+84-10 POST 200
+84-11 GET 200
+84-08 GET 200
+84-10 POST 200
+84-03 GET 200
+84-04 rol POST 403
+84-04 precio cero POST 422
+84-04 categoría inexistente POST 422
+84-04 clave JSON duplicada POST 400
+84-04 POST 201
+84-01 GET 200
+84-02 GET 200
+84-06 PATCH PATCH 200
+84-06 conflicto PATCH 409
+84-05 PUT 200
+84-02 inactivo GET 404
+84-02 admin inactivo GET 200
+84-01 filtro restringido GET 403
+84-01 filtro admin GET 200
+84-07 DELETE 204
+HTTP método PUT 405
+HTTP negociación GET 406
+HTTP tipo de cuerpo POST 415
+JSP listado público GET 200
+JSP formulario sin sesión GET 401
+JSP POST sin sesión POST 401
+JSP POST rol cliente POST 403
+JSP POST sin CSRF POST 403
+JSP formulario admin GET 200
+JSP POST válido POST 302
+JSP persistencia GET 200
+84-07 limpieza producto ficticio DELETE 204
+T20.a ruta inexistente GET 404
+T02.a ID cero GET 400
+T02.b ID inexistente GET 404
+T01.a página inválida GET 400
+T01.b página 1 GET 200
+T01.c página 2 GET 200
+T01.d categoría GET 200
+T04.a límite precio POST 422
+T04.a límite stockInicial POST 422
+T04.a límite marca POST 422
+T04.a límite nombreProducto POST 422
+T04.b importe fuera de rango POST 422
+T04.c precio de tipo incorrecto POST 400
+T20.b límite de tamaño POST 413
+T20.c límite de profundidad POST 400
+84-08 GET 200
+T09.a registro inválido nombre POST 422
+T09.a registro inválido correo POST 422
+T09.a registro inválido contrasena POST 422
+T09.a registro inválido rol POST 400
+T20.d CORS no permitido OPTIONS 403
+84-08 GET 200
+84-09 segundo cliente POST 201
+84-10 POST 200
+84-04 producto para carrito POST 201
+T13.a anónimo GET 401
+T14.a cantidad cero PUT 422
+T14.b propietario impuesto PUT 400
+T14.c producto inexistente PUT 404
+T14.d desactivar PUT 200
+T14.e producto inactivo PUT 409
+T14.f reactivar PUT 200
+84-13 vacío GET 200
+84-13 rol GET 403
+84-14 cantidad inválida PUT 422
+84-14 stock insuficiente PUT 409
+84-14 PUT 201
+84-14 reemplazo idempotente PUT 200
+84-13 GET 200
+84-13 aislamiento GET 200
+84-15 DELETE 204
+84-15 repetición DELETE 204
+T14.g mutación concurrente 2 PUT 201
+T14.g mutación concurrente 1 PUT 200
+T14.h unicidad después de carrera GET 200
+84-16 DELETE 204
+84-13 vacío tras borrado GET 200
+84-07 limpieza carrito DELETE 204
+84-04 producto para pedido POST 201
+84-13 cotización GET 200
+T17.a carrito vacío POST 409
+T18.a anónimo GET 401
+T19.a ID inválido GET 400
+T19.b pedido inexistente GET 404
+84-14 preparar pedido PUT 201
+84-13 cotización GET 200
+84-17 token de otro usuario POST 400
+84-17 token malformado POST 400
+84-17 clave malformada POST 400
+84-14 cambiar revisión PUT 200
+84-17 revisión modificada POST 409
+84-13 cotización GET 200
+84-05 cambio de precio PUT 200
+84-17 precio modificado POST 409
+84-13 cotización GET 200
+84-02 stock intacto tras conflicto GET 200
+84-18 sin pedido tras conflicto GET 200
+84-13 cotización GET 200
+T17.b desactivar artículo cotizado PUT 200
+T17.c artículo inactivo POST 409
+84-13 cotización GET 200
+T17.d reactivar artículo PUT 200
+84-17 referencia vencida POST 409
+84-17 POST 201
+84-13 cotización GET 200
+84-17 replay tras vencimiento POST 200
+84-17 clave reutilizada POST 409
+84-02 descuento único GET 200
+84-18 GET 200
+84-19 GET 200
+T17.e subir precio tras pedido PUT 200
+T19.c importe histórico GET 200
+84-19 pedido ajeno GET 404
+84-18 aislamiento GET 200
+84-07 FK DELETE 409
+84-14 carrera cliente A PUT 201
+84-14 carrera cliente B PUT 201
+84-13 cotización GET 200
+84-13 cotización GET 200
+84-17 carrera cliente B POST 201
+84-17 carrera cliente A POST 409
+84-02 último stock GET 200
+84-13 cotización GET 200
+84-16 limpiar carrito ficticio DELETE 204
+84-04 producto replay concurrente POST 201
+84-14 preparar replay concurrente PUT 201
+84-13 cotización GET 200
+84-17 misma clave concurrente B POST 201
+84-17 misma clave concurrente A POST 200
+84-02 stock tras replay concurrente GET 200
+84-12 DELETE 204
+84-12 sesión invalidada GET 401
+84-08 GET 200
+T09.b límite alta 1 POST 422
+T09.b límite alta 2 POST 429
+T10.a límite intento 1 POST 401
+T10.a límite intento 2 POST 401
+T10.a límite intento 3 POST 401
+T10.a límite intento 4 POST 401
+T10.a límite intento 5 POST 401
+T10.a límite intento 6 POST 401
+T10.a límite intento 7 POST 401
+T10.a límite intento 8 POST 401
+T10.a límite intento 9 POST 401
+T10.a límite intento 10 POST 401
+T10.a límite intento 11 POST 401
+T10.a límite intento 12 POST 401
+T10.a límite intento 13 POST 401
+T10.a límite intento 14 POST 401
+T10.a límite intento 15 POST 401
+T10.a límite intento 16 POST 401
+T10.a límite intento 17 POST 429
+T21 HTTP local ms {"muestras":162,"minimo":1.19,"mediana":11.16,"p95":35.66,"maximo":461.22,"bajo3000":162}
+Verificación técnica completa completada.
