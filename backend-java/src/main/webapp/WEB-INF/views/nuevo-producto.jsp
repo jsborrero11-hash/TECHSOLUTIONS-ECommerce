@@ -75,6 +75,7 @@
 
         <form action="${pageContext.request.contextPath}/productos"
               method="post" accept-charset="UTF-8">
+            <input type="hidden" name="csrf" value="${csrf}">
 
             <label for="idCategoria">ID de categoría</label>
             <input type="number" id="idCategoria"
@@ -82,11 +83,11 @@
 
             <label for="nombreProducto">Nombre del producto</label>
             <input type="text" id="nombreProducto"
-                   name="nombreProducto" maxlength="150" required>
+                   name="nombreProducto" maxlength="100" required>
 
             <label for="marca">Marca</label>
             <input type="text" id="marca"
-                   name="marca" maxlength="100" required>
+                   name="marca" maxlength="50" required>
 
             <label for="descripcion">Descripción</label>
             <textarea id="descripcion" name="descripcion"

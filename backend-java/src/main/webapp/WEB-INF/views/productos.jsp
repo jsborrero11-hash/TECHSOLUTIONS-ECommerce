@@ -119,10 +119,12 @@
         </p>
 
         <!-- Botón para abrir el formulario de registro -->
+        <% if (Boolean.TRUE.equals(request.getAttribute("administrador"))) { %>
         <a class="boton-nuevo"
            href="${pageContext.request.contextPath}/productos?accion=nuevo">
             + Registrar nuevo producto
         </a>
+        <% } %>
 
         <% if (productos != null && !productos.isEmpty()) { %>
 

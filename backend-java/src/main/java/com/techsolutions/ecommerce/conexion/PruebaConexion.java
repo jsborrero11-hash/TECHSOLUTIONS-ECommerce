@@ -14,14 +14,14 @@ public class PruebaConexion {
 
             if (conexion.isValid(5)) {
                 System.out.println("CONEXIÓN EXITOSA");
-                System.out.println("Base de datos: techsolutions");
+                System.out.println("Base de datos: " + conexion.getCatalog());
             } else {
-                System.out.println("La conexión no es válida.");
+                throw new SQLException("La conexión no es válida.");
             }
 
-        } catch (SQLException e) {
+        } catch (SQLException | IllegalStateException e) {
             System.out.println("ERROR DE CONEXIÓN:");
-            System.out.println(e.getMessage());
+            throw new IllegalStateException("No se pudo comprobar la conexión configurada.");
 
         } finally {
             try {

@@ -2,6 +2,8 @@ package com.techsolutions.ecommerce.dao;
 
 import com.techsolutions.ecommerce.conexion.ConexionBD;
 import com.techsolutions.ecommerce.modelo.Producto;
+import com.techsolutions.ecommerce.servicio.Catalogo.Vista;
+import com.techsolutions.ecommerce.validacion.Validar;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +14,69 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductoDAO {
+
+    private static final String JOIN_CATEGORIA = """
+            FROM producto p JOIN categoria c USING (id_categoria)
+            """;
+
+    public Validar.Lista<Vista> buscar(String q, Integer categoria, String estado, Validar.Pagina pagina) throws SQLException {
+        List<Object> filtros = new ArrayList<>();
+        StringBuilder condiciones = new StringBuilder(" WHERE 1=1");
+        if (!"TODOS".equals(estado)) {
+            condiciones.append(" AND p.estado=?");
+            filtros.add(estado);
+        }
+        if (categoria != null) {
+            condiciones.append(" AND p.id_categoria=?");
+            filtros.add(categoria);
+        }
+        if (q != null && !q.isBlank()) {
+            condiciones.append("""
+                     AND (LOCATE(?,p.nombre_producto)>0 OR LOCATE(?,p.marca)>0
+                          OR LOCATE(?,p.descripcion)>0 OR LOCATE(?,c.nombre_categoria)>0)
+                    """);
+            filtros.addAll(List.of(q.strip(), q.strip(), q.strip(), q.strip()));
+        }
+        return Sql.conectar(c -> {
+            long total = Sql.uno(c, "SELECT COUNT(*) " + JOIN_CATEGORIA + condiciones, rs -> rs.getLong(1), filtros.toArray());
+            filtros.add(pagina.tamano());
+            filtros.add(pagina.offset());
+            List<Vista> items = Sql.lista(c, "SELECT p.*,c.nombre_categoria " + JOIN_CATEGORIA
+                    + condiciones + " ORDER BY p.id_producto LIMIT ? OFFSET ?", this::vista, filtros.toArray());
+            return new Validar.Lista<>(items, pagina.numero(), pagina.tamano(), total);
+        });
+    }
+
+    public Vista detalle(int id) throws SQLException {
+        return Sql.conectar(c -> Sql.uno(c, "SELECT p.*,c.nombre_categoria " + JOIN_CATEGORIA
+                + " WHERE p.id_producto=?", this::vista, id));
+    }
+
+    private Vista vista(ResultSet rs) throws SQLException {
+        return Vista.desde(convertirProducto(rs), rs.getString("nombre_categoria"));
+    }
+
+    public List<Producto> listarActivos() throws SQLException {
+        return Sql.conectar(c -> Sql.lista(c, "SELECT * FROM producto WHERE estado='ACTIVO' ORDER BY id_producto",
+                this::convertirProducto));
+    }
+
+    public boolean actualizarCatalogo(Producto p) throws SQLException {
+        return Sql.conectar(c -> Sql.cambiar(c, """
+                UPDATE producto SET id_categoria=?,nombre_producto=?,marca=?,descripcion=?,
+                    precio=?,especificaciones=?,estado=? WHERE id_producto=?
+                """, p.getIdCategoria(), p.getNombreProducto(), p.getMarca(), p.getDescripcion(),
+                p.getPrecio(), p.getEspecificaciones(), p.getEstado(), p.getIdProducto()) > 0);
+    }
+
+    public Producto bloquear(Connection c, int id) throws SQLException {
+        return Sql.uno(c, "SELECT * FROM producto WHERE id_producto=? FOR UPDATE", this::convertirProducto, id);
+    }
+
+    public boolean ajustarStock(Connection c, int id, int esperado, int nuevo) throws SQLException {
+        return Sql.cambiar(c, "UPDATE producto SET stock=? WHERE id_producto=? AND stock=?",
+                nuevo, id, esperado) > 0;
+    }
 
     // CREATE: Registrar un producto
     public int insertar(Producto producto) throws SQLException {
