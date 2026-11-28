@@ -1,6 +1,78 @@
 # TECHSOLUTIONS-ECommerce
 
-## Entrega vigente · GA7-220501096-AA4-EV03
+## Evidencia 84 · Servicios web REST
+
+**GA7-220501096-AA5-EV01 · Jefferson Sosa Borrero · SENA**
+
+La API se distribuye como WAR independiente. El frontend aprobado de la evidencia 82 conserva su funcionamiento con datos locales y todavía no consume el backend.
+
+- [Informe de desarrollo (PDF)](docs/evidencia-84/Informe_Desarrollo_Servicios_Web.pdf) · [Fuente editable](docs/evidencia-84/Informe_Desarrollo_Servicios_Web.md)
+- [Documentación REST (PDF)](docs/evidencia-84/Documentacion_API_REST.pdf) · [Fuente editable](docs/evidencia-84/Documentacion_API_REST.md)
+- [Matriz maestra y evidencia QA](qa/84-env/seguimiento-84.md)
+
+### Obtener el proyecto
+
+```sh
+git clone --branch evidencia-ga7-aa5-ev01-api-rest https://github.com/jsborrero11-hash/TECHSOLUTIONS-ECommerce.git
+cd TECHSOLUTIONS-ECommerce
+```
+
+También se puede trabajar desde la raíz del ZIP extraído. Usar JDK 21, Maven 3.10.0, MySQL 8.4 y Tomcat 10.1. Node.js 24.x sirve para la regresión HTTP y para React. Confirmar `java -version`, `mvn -version` y que `JAVA_HOME` apunte al JDK. Ajustar las rutas locales según la instalación.
+
+### Preparar MySQL de QA
+
+1. Confirmar la instancia elegida con `SELECT VERSION(), @@port, @@datadir`. Usar un entorno independiente de datos originales.
+2. Si `techsolutions_test` no existe, ejecutar con una cuenta autorizada, en este orden, [base](qa/84-env/techsolutions_test-base.sql), [datos ficticios](qa/84-env/techsolutions_test-demo.sql) y [V001](qa/84-env/V001__carrito_pedidos.sql). Usar rutas relativas a la raíz con `SOURCE` en el cliente MySQL. Si el esquema existe, revisar el DDL y su estado. V001 se aplica una sola vez. Cada ALTER confirma por separado y, ante un fallo intermedio, se revisa el esquema antes de reanudar.
+3. Separar la cuenta de migración de la cuenta operativa. Crear la cuenta operativa con autenticación desde su sentencia inicial y conceder SELECT, INSERT, UPDATE y DELETE solo en `techsolutions_test.*`. Validar `SELECT DATABASE(), CURRENT_USER()` y `SHOW GRANTS`. En Windows se ofrece [Aprovisionar-CuentaQA.ps1](qa/84-env/Aprovisionar-CuentaQA.ps1) para MySQL local en 3306. Pasar `-Mysql` si el cliente está en otra ruta y `-ArchivoDpapi` con un destino fuera del repositorio. Ejecutar el script solo para una cuenta nueva y con un acceso de migración autorizado.
+
+### Configurar, compilar y preparar el administrador ficticio
+
+| Variable | Valor en un entorno local de QA |
+|---|---|
+| `TECHSOLUTIONS_DB_HOST` | `127.0.0.1` para MySQL local. |
+| `TECHSOLUTIONS_DB_PORT` | Puerto verificado. El script Windows de despliegue espera `3306`. |
+| `TECHSOLUTIONS_DB_NAME` | `techsolutions_test`. |
+| `TECHSOLUTIONS_DB_USER` | Cuenta operativa limitada. |
+| `TECHSOLUTIONS_DB_PASSWORD` | Secreto de esa cuenta, suministrado localmente. |
+| `TECHSOLUTIONS_CART_SIGNING_KEY` | Base64 de al menos 32 bytes aleatorios. Mantenerlo estable mientras sigan vigentes las confirmaciones. |
+| `TECHSOLUTIONS_QA_ADMIN_EMAIL` | Correo ficticio con dominio `example.test`. |
+| `TECHSOLUTIONS_QA_ADMIN_PASSWORD` | Contraseña ficticia de 15–128 caracteres, suministrada localmente. |
+
+Inyectar los secretos en el proceso mediante el mecanismo local autorizado. Si se utiliza el aprovisionador Windows, descifrar DPAPI desde el mismo usuario que creó el archivo y transferirlo al entorno del proceso. Los valores de las variables sensibles no se guardan en Git. Para crear la clave de firma sin mostrarla, en PowerShell:
+
+```powershell
+$cartBytes = New-Object byte[] 32
+$cartRng = [Security.Cryptography.RandomNumberGenerator]::Create()
+try { $cartRng.GetBytes($cartBytes) } finally { $cartRng.Dispose() }
+$env:TECHSOLUTIONS_CART_SIGNING_KEY = [Convert]::ToBase64String($cartBytes)
+```
+
+Desde la raíz ejecutar:
+
+```sh
+mvn -f backend-java/pom.xml clean verify
+```
+
+El WAR se genera en `backend-java/target/backend-java-1.0-SNAPSHOT.war`. Para aprovisionar el administrador ficticio una sola vez desde PowerShell:
+
+```powershell
+$warDir = (Resolve-Path backend-java/target/backend-java-1.0-SNAPSHOT/WEB-INF).Path
+java -cp "$warDir/classes;$warDir/lib/*" com.techsolutions.ecommerce.servicio.Usuarios
+```
+
+En sistemas tipo Unix, utilizar `:` como separador del classpath. El aprovisionador Java exige el esquema QA. Si el administrador ficticio ya existe, usar su acceso autorizado.
+
+### Desplegar y verificar
+
+- **General.** Iniciar un Tomcat 10.1 aislado con las variables configuradas y desplegar el WAR como `techsolutions-84.war`. Usar el puerto y contexto acordados. Verificar la conexión JDBC a QA antes de ejercer escrituras.
+- **Windows local.** Con 8080 libre, usar [Iniciar-TomcatQA.ps1](qa/84-env/Iniciar-TomcatQA.ps1) con `-TomcatHome` apuntando a la instalación y `-Base` a una carpeta temporal nueva. Verifica el esquema y publica solo en loopback.
+- **Lectura inicial.** Abrir `http://127.0.0.1:8080/techsolutions-84/api/v1/productos` o ejecutar `curl.exe -i http://127.0.0.1:8080/techsolutions-84/api/v1/categorias` en Windows. Para mutaciones autenticadas seguir la documentación de sesión y CSRF.
+- **Pruebas.** Confirmar el esquema y los permisos antes de habilitar `TECHSOLUTIONS_RUN_QA_INTEGRATION=true` y repetir Maven. Con el Tomcat de QA desplegado, usar `TECHSOLUTIONS_QA_INTEGRAL=true` y ejecutar `node qa/84-env/verificar-api.mjs completa`. El proceso de prueba requiere el administrador ficticio y la misma clave de firma que Tomcat para cubrir vencimiento y replay. Solo crea datos ficticios en QA.
+- **React opcional.** Desde `frontend-react/`, ejecutar `npm ci` y `npm run dev`. Sus antecedentes y comandos de verificación se conservan en la sección histórica.
+
+Las evidencias de 84.6 corresponden a HTTP local. TLS, cookies Secure en HTTPS, carga y disponibilidad requieren otro perfil de validación.
+
+## Antecedente · GA7-220501096-AA4-EV03
 
 - **Institución:** Servicio Nacional de Aprendizaje (SENA)
 - **Programa:** Análisis y Desarrollo de Software
@@ -34,6 +106,8 @@ La actividad 82 documenta el flujo de compra, teclado, responsive y toque emulad
 ---
 
 ## Documentación histórica · GA7-220501096-AA2-EV01
+
+Esta sección conserva las instrucciones de la entrega Java anterior. Para ejecutar el WAR de la evidencia 84, utilizar la configuración y el esquema QA descritos al inicio del README.
 
 Las siguientes secciones describen el módulo Java y las instrucciones de aquella evidencia. La entrega Frontend EV03 se ejecuta siguiendo la guía anterior.
 
